@@ -15,5 +15,6 @@
         
     <mapping class="ar.com.ada.hoteltresvagos.entities.Huesped" />
      
+     
   </session-factory>
 </hibernate-configuration>
