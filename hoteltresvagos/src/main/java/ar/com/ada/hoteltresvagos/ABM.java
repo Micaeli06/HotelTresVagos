@@ -1,6 +1,8 @@
 package ar.com.ada.hoteltresvagos;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -98,19 +100,57 @@ public class ABM {
         if (domAlternativo != null)
             huesped.setDomicilioAlternativo(domAlternativo);
 
-        
-        ABMHuesped.create(huesped);
+        //Generamos una reserva.
+        Reserva reserva = new Reserva();
 
-        /*
-         * Si concateno el OBJETO directamente, me trae todo lo que este en el metodo
-         * toString() mi recomendacion es NO usarlo para imprimir cosas en pantallas, si
-         * no para loguear info Lo mejor es usar:
-         * System.out.println("Huesped generada con exito.  " + huesped.getHuespedId);
-         */
+        BigDecimal importeReserva = new BigDecimal(1000);
+        reserva.setImporteReserva(importeReserva); //FORMA1
 
-        System.out.println("Huesped generada con exito.  " + huesped);
+        reserva.setImporteTotal(new BigDecimal(3000)); //FORMA2
 
-    }
+        reserva.setImportePagado(new BigDecimal(0));
+
+        reserva.setFechaReserva(new Date()); //Fecha actual
+
+        System.out.println("Ingrese la fecha de ingreso(dd/mm/yy");
+
+        Date fechaIngreso = null;
+        Date fechaEgreso = null;
+
+        DateFormat dFormat = new SimpleDateFormat("dd/mm/yy"); //el formato en el que se va a ingresar la fecha
+
+        //Alternativa de leer la fecha con try catch
+        try{
+        fechaIngreso = dFormat.parse(Teclado.nextLine()); //Parsea lo que lea por teclado al formato "dd/mm/yy"
+
+        } catch(Exception ex){
+            System.out.println("Ingreso una fecha invalida. ");
+            System.out.println("Vuelva a empezar.");
+            return;
+        }
+
+         //Alternativa de leer fecha a los golpes(puede tirar una excepcion)
+         System.out.println("Ingrese la fecha de egreso(dd/mm/yy)");
+         fechaEgreso = dFormat.parse(Teclado.nextLine());
+         
+         reserva.setFechaIngreso(fechaIngreso); 
+         reserva.setFechaEgreso(fechaEgreso); //por ahora 1 dia.
+         reserva.setTipoEstadoId(20); //En mi caso, 20 significa pagado.
+         reserva.setHuesped(huesped); //Esta es la relacion bidireccional
+         
+         //Actualizo todos los objeto
+         ABMHuesped.create(huesped);
+ 
+         /*
+          * Si concateno el OBJETO directamente, me trae todo lo que este en el metodo
+          * toString() mi recomendacion es NO usarlo para imprimir cosas en pantallas, si
+          * no para loguear info Lo mejor es usar:
+          * System.out.println("Huesped generada con exito.  " + huesped.getHuespedId);
+          */
+ 
+         System.out.println("Huesped generada con exito.  " + huesped);
+ 
+     }    
 
     public void baja() {
         System.out.println("Ingrese el nombre:");
