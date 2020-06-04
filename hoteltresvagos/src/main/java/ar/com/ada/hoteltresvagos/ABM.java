@@ -112,7 +112,7 @@ public class ABM {
 
         reserva.setFechaReserva(new Date()); //Fecha actual
 
-        System.out.println("Ingrese la fecha de ingreso(dd/mm/yy");
+        System.out.println("Ingrese la fecha de ingreso(dd/mm/yy)");
 
         Date fechaIngreso = null;
         Date fechaEgreso = null;
@@ -135,7 +135,7 @@ public class ABM {
          
          reserva.setFechaIngreso(fechaIngreso); 
          reserva.setFechaEgreso(fechaEgreso); //por ahora 1 dia.
-         reserva.setTipoEstadoId(20); //En mi caso, 20 significa pagado.
+         reserva.setTipoEstadoId(10); //En mi caso, 20 significa pagado.
          reserva.setHuesped(huesped); //Esta es la relacion bidireccional
          
          //Actualizo todos los objeto
