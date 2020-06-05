@@ -117,7 +117,7 @@ public class ABM {
         Date fechaIngreso = null;
         Date fechaEgreso = null;
 
-        DateFormat dFormat = new SimpleDateFormat("dd/mm/yy"); //el formato en el que se va a ingresar la fecha
+        DateFormat dFormat = new SimpleDateFormat("dd/MM/yy"); //el formato en el que se va a ingresar la fecha
 
         //Alternativa de leer la fecha con try catch
         try{
@@ -148,7 +148,10 @@ public class ABM {
           * System.out.println("Huesped generada con exito.  " + huesped.getHuespedId);
           */
  
-         System.out.println("Huesped generada con exito.  " + huesped);
+         System.out.println("Huesped generado/a con exito.  " + huesped);
+
+         
+
  
      }    
 
