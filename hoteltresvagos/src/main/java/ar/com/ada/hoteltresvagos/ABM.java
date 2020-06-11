@@ -460,6 +460,12 @@ public class ABM {
 
     private void listarReservas() {
         System.out.println("FUNCIONA LISTA");
+
+        List<Reserva> todas = ABMReserva.buscarTodas();
+        for (Reserva reserva : todas) {
+            mostrarReserva(reserva);
+        }
+
     }
 
     private void reservaPorNombreHuesped() {
@@ -469,11 +475,11 @@ public class ABM {
 
         List<Reserva> reservas = ABMHuesped.buscarReservasPor(nombre);
         for (Reserva reserva : reservas) {
-            mostrarReservaPorNombre(reserva);
+            mostrarReserva(reserva);
         }
     }
 
-    public void mostrarReservaPorNombre(Reserva reserva) {
+    public void mostrarReserva(Reserva reserva) {
 
         System.out.print("\nReserva: \nId: " + reserva.getReservaId() + "\nFecha Reserva: " + reserva.getFechaReserva()
                 + "\nFecha de Ingreso: " + reserva.getFechaIngreso() + "\nFecha de Egreso: " + reserva.getFechaEgreso()
